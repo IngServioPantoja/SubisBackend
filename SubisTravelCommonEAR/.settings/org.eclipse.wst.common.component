@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SubisTravelCommonEAR">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="TauLabsTransferenciasEJB-1.0.jar" deploy-path="/" handle="module:/resource/TauLabsTransferenciasEJB/TauLabsTransferenciasEJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TauLabsUtils-1.0.jar" deploy-path="/lib" handle="module:/resource/TauLabsUtils/TauLabsUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SubisTravelWeb-1.0.war" deploy-path="/" handle="module:/resource/SubisTravelWeb/SubisTravelWeb">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
