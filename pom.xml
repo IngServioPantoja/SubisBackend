@@ -8,6 +8,7 @@
   <name>SubisTravelContainer</name>
   <modules>
   	<module>TauLabsUtils</module>
+  	<module>TauLabsPersistence</module>
     <module>SubisTravelWeb</module>
     <module>SubisTravelCommonEAR</module>
     <module>SubisTravelEntidadesEJB</module>

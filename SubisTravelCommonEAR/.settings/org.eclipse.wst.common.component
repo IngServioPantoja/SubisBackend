@@ -5,7 +5,13 @@
         <dependent-module archiveName="TauLabsTransferenciasEJB-1.0.jar" deploy-path="/" handle="module:/resource/TauLabsTransferenciasEJB/TauLabsTransferenciasEJB">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="TauLabsEntidadesEJB-1.0.jar" deploy-path="/" handle="module:/resource/TauLabsEntidadesEJB/TauLabsEntidadesEJB">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="TauLabsUtils-1.0.jar" deploy-path="/lib" handle="module:/resource/TauLabsUtils/TauLabsUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="TauLabsPersistence-1.0.jar" deploy-path="/" handle="module:/resource/TauLabsPersistence/TauLabsPersistence">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="SubisTravelWeb-1.0.war" deploy-path="/" handle="module:/resource/SubisTravelWeb/SubisTravelWeb">
