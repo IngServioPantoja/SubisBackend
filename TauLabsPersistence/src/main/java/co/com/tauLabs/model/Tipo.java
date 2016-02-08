@@ -12,8 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="tipo")
 public class Tipo implements Serializable, IEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
@@ -25,12 +27,15 @@ public class Tipo implements Serializable, IEntity<Long> {
 	private String estado;
 
 	private String nombre;
+	
+	@Column(name="id_tipo_padre")
+	private Long idTipoPadre;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_tipo_padre")
-	private Tipo tipo;
+	@JoinColumn(name="id_tipo_padre",insertable=false,updatable=false)
+	private Tipo tipoPadre;
 
-	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipoPadre")
 	private List<Tipo> tipos;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
@@ -77,40 +82,12 @@ public class Tipo implements Serializable, IEntity<Long> {
 		this.contenidos = contenidos;
 	}
 
-	public Contenido addContenido(Contenido contenido) {
-		getContenidos().add(contenido);
-		contenido.setTipo(this);
-
-		return contenido;
-	}
-
-	public Contenido removeContenido(Contenido contenido) {
-		getContenidos().remove(contenido);
-		contenido.setTipo(null);
-
-		return contenido;
-	}
-
 	public List<Entidad> getEntidades() {
 		return this.entidades;
 	}
 
 	public void setEntidades(List<Entidad> entidades) {
 		this.entidades = entidades;
-	}
-
-	public Entidad addEntidade(Entidad entidade) {
-		getEntidades().add(entidade);
-		entidade.setTipo(this);
-
-		return entidade;
-	}
-
-	public Entidad removeEntidade(Entidad entidade) {
-		getEntidades().remove(entidade);
-		entidade.setTipo(null);
-
-		return entidade;
 	}
 
 	public List<Item> getItems() {
@@ -121,26 +98,12 @@ public class Tipo implements Serializable, IEntity<Long> {
 		this.items = items;
 	}
 
-	public Item addItem(Item item) {
-		getItems().add(item);
-		item.setTipo(this);
-
-		return item;
+	public Tipo getTipoPadre() {
+		return this.tipoPadre;
 	}
 
-	public Item removeItem(Item item) {
-		getItems().remove(item);
-		item.setTipo(null);
-
-		return item;
-	}
-
-	public Tipo getTipo() {
-		return this.tipo;
-	}
-
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
+	public void setTipoPadre(Tipo tipoPadre) {
+		this.tipoPadre = tipoPadre;
 	}
 
 	public List<Tipo> getTipos() {
@@ -151,18 +114,5 @@ public class Tipo implements Serializable, IEntity<Long> {
 		this.tipos = tipos;
 	}
 
-	public Tipo addTipo(Tipo tipo) {
-		getTipos().add(tipo);
-		tipo.setTipo(this);
-
-		return tipo;
-	}
-
-	public Tipo removeTipo(Tipo tipo) {
-		getTipos().remove(tipo);
-		tipo.setTipo(null);
-
-		return tipo;
-	}
 
 }

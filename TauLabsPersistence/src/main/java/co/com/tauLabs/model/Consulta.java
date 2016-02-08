@@ -1,16 +1,22 @@
 package co.com.tauLabs.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-/**
- * The persistent class for the consulta database table.
- * 
- */
 @Entity
-@NamedQuery(name="Consulta.findAll", query="SELECT c FROM Consulta c")
+@Table(name="consulta")
 public class Consulta implements Serializable, IEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
@@ -21,15 +27,19 @@ public class Consulta implements Serializable, IEntity<Long> {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
+	
+	@Column(name="idCatalogo")
+	private Long idCatalogo;
 
-	//bi-directional many-to-one association to Catalogo
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_catalogo")
+	@JoinColumn(name="id_catalogo",insertable=false,updatable=false)
 	private Catalogo catalogo;
+	
+	@Column(name="id_item")
+	private Long idItem;
 
-	//bi-directional many-to-one association to Item
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_item")
+	@JoinColumn(name="id_item",insertable=false,updatable=false)
 	private Item item;
 
 	public Consulta() {
@@ -65,6 +75,22 @@ public class Consulta implements Serializable, IEntity<Long> {
 
 	public void setItem(Item item) {
 		this.item = item;
+	}
+
+	public Long getIdCatalogo() {
+		return idCatalogo;
+	}
+
+	public void setIdCatalogo(Long idCatalogo) {
+		this.idCatalogo = idCatalogo;
+	}
+
+	public Long getIdItem() {
+		return idItem;
+	}
+
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
 	}
 
 }

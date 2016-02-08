@@ -1,16 +1,19 @@
 package co.com.tauLabs.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-/**
- * The persistent class for the clasificacion database table.
- * 
- */
 @Entity
-@NamedQuery(name="Clasificacion.findAll", query="SELECT c FROM Clasificacion c")
+@Table(name="clasificacion")
 public class Clasificacion implements Serializable, IEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
@@ -22,9 +25,8 @@ public class Clasificacion implements Serializable, IEntity<Long> {
 	private String estado;
 
 	private String nombre;
-
-	//bi-directional many-to-one association to Item
-	@OneToMany(mappedBy="clasificacion")
+	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="clasificacion")
 	private List<Item> items;
 
 	public Clasificacion() {
@@ -60,20 +62,6 @@ public class Clasificacion implements Serializable, IEntity<Long> {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
-	}
-
-	public Item addItem(Item item) {
-		getItems().add(item);
-		item.setClasificacion(this);
-
-		return item;
-	}
-
-	public Item removeItem(Item item) {
-		getItems().remove(item);
-		item.setClasificacion(null);
-
-		return item;
 	}
 
 }
