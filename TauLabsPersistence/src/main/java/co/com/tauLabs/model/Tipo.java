@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tipo")
 public class Tipo implements Serializable, IEntity<Long> {
@@ -31,19 +33,24 @@ public class Tipo implements Serializable, IEntity<Long> {
 	@Column(name="id_tipo_padre")
 	private Long idTipoPadre;
 
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_tipo_padre",insertable=false,updatable=false)
 	private Tipo tipoPadre;
 
+	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipoPadre")
 	private List<Tipo> tipos;
 	
+	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Contenido> contenidos;
 	
+	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Entidad> entidades;
 	
+	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Item> items;
 

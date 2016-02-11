@@ -39,7 +39,7 @@ public class TestJPQL {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Test
+//	@Test
 	public void testActualizarObjeto() {
 		System.out.println("Iniciando test Persona Entity con JPA");
 		assertTrue(em != null);

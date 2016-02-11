@@ -26,7 +26,7 @@ public class EntidadServiceRSTest {
 		WebResource web = client.resource("http://localhost:8182/SubisTravelWeb/services/entidades/1");
 
 		Entidad entidad = web.get(Entidad.class);
-//		System.out.println("La entidad es: " + entidad.getNombre() + " "+ entidad.getUsuarioCreacion());
+		System.out.println("La entidad es: " + entidad.getNombre() + " "+ entidad.getNombre());
 
 		System.out.println();
 

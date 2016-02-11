@@ -12,8 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name="entidad", schema="SubisDB")
 public class Entidad implements Serializable, IEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
@@ -37,10 +41,12 @@ public class Entidad implements Serializable, IEntity<Long> {
 	@Column(name="id_tipo", nullable = false)
 	private Long idTipo;
 	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_tipo",insertable = false, updatable = false)
 	private Tipo tipo;
 
+	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="entidad")
 	private List<Usuario> usuarios;
 

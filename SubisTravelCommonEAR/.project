@@ -3,7 +3,6 @@
 	<name>SubisTravelCommonEAR</name>
 	<comment></comment>
 	<projects>
-		<project>TauLabsTransferenciasEJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
