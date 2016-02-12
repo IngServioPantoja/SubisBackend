@@ -13,11 +13,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="tipo")
+@Table(name="TIPO", schema="SubisDB")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Tipo implements Serializable, IEntity<Long> {
 	private static final long serialVersionUID = 1L;
 
@@ -33,23 +39,28 @@ public class Tipo implements Serializable, IEntity<Long> {
 	@Column(name="id_tipo_padre")
 	private Long idTipoPadre;
 
+	@XmlTransient
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_tipo_padre",insertable=false,updatable=false)
 	private Tipo tipoPadre;
 
+	@XmlTransient
 	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipoPadre")
 	private List<Tipo> tipos;
 	
+	@XmlTransient
 	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Contenido> contenidos;
 	
+	@XmlTransient
 	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Entidad> entidades;
 	
+	@XmlTransient
 	@JsonIgnore
 	@OneToMany(fetch=FetchType.LAZY,mappedBy="tipo")
 	private List<Item> items;

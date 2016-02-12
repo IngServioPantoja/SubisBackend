@@ -46,7 +46,7 @@ public class EntidadServiceRS{
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Entidad> listar(){
-		logger.info("listar");
+		logger.info("listar actualizado");
 		try {
 			return personaService.listar();
 		} catch (Exception e) {

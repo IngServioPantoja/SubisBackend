@@ -18,6 +18,7 @@
     <module>TauLabsQualificationEJB</module>
     <module>TauLabsReportEJB</module>
     <module>TauLabsMessagesEJB</module>
+    <module>TauLabsSecurity</module>
   </modules>
   <build>
   	<pluginManagement>

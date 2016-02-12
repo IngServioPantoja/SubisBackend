@@ -26,7 +26,7 @@ public class PersonaServiceTest {
 		}
 	}
 
-	@Test
+//	@Test
 	public void testEJBPersonaService() {
 		System.out.println("Iniciando test EJB PersonaService");
 		
